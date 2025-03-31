@@ -5,17 +5,6 @@ from datetime import datetime
 def create_ym(_df, _col = 'Adj Close'):
     # 복사본 생성
     result = _df.copy()
-    # Date 컬럼이 존재하는가?
-    if 'Date' in result.columns:
-        # Date를 index로 변경
-        result.set_index('Date', inplace=True)
-    # index를 시계열로 변경
-    result.index = pd.to_datetime(result.index, utc=True)
-    try:
-        result.index = result.index.tz_localize(None)
-    except Exception as e:
-        print(e)
-    # 결측치, 무한대 값들은 제외
     flag = result.isin([np.nan, np.inf, -np.inf]).any(axis=1)
     result = result.loc[~flag][[_col]]
     # 파생변수를 생성

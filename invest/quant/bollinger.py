@@ -12,40 +12,18 @@ def create_band(
 ):
     # 복사본을 생성
     result = _df.copy()
-    # 컬럼 중 Date 컬럼이 존재하는가?
-    if 'Date' in result.columns:
-        # Date를 인덱스로 변환
-        result.set_index('Date', inplace=True)
-    # index를 시계열 데이터로 변경
-    result.index = pd.to_datetime(result.index, format="%Y-%m-%d")
-    # index에 tz속성에 값이 존재하면 None 변경
-    if result.index.tz:
-        result.index = result.index.tz_localize(None)
-    # 결측치, 무한대를 제외시킨다.
-    flag = result.isin( [np.nan, np.inf, -np.inf] ).any(axis=1)
-    result = result.loc[~flag, [_col]]
-
     # 이동평균선, 상단 밴드, 하단 밴드 생성
     result['center'] = result[_col].rolling(_cnt).mean()
     result['up'] = result['center'] + (2 * result[_col].rolling(_cnt).std())
     result['down'] = result['center'] - (2 * result[_col].rolling(_cnt).std())
-    # 시작 시간과 종료 시간을 시계열 데이터로 변경
-    try: 
-        start = datetime.strptime(_start, "%Y-%m-%d")
-        if type(_end) == 'str':
-            end = datetime.strptime(_end, "%Y-%m-%d")
-        else:
-            end = _end
-    except:
-        print("시작 시간과 종료 시간의 포맷은 YYYY-mm-dd 입니다.")
-        return ""
+
     # 시작 시간과 종료 시간을 기준으로 데이터를 필터링
-    result = result.loc[start : end]
+    result = result.loc[_start : _end]
     return result
 
 def create_trade(_band):
     result = _band.copy()
-    # 텃번째 컬럼의 이름을 변수에 저장
+    # 첫번째 컬럼의 이름을 변수에 저장
     col = result.columns[0]
 
     # 보유 내역 컬럼을 생성 '' 대입
