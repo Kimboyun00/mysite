@@ -321,7 +321,7 @@
       <!-- 그래프가 그려지는 부분 -->
        <!-- ChartJs 를 이용하여 그래프를 생성 -->
       <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-      <!-- <canvas class="my-4 w-100" id="myChart2" width="900" height="380"></canvas> -->
+      <canvas class="my-4 w-100" id="myChart2" width="900" height="380"></canvas>
 
       <!-- table 전 서브 제목 -->
       <h2>Section title</h2>
@@ -415,35 +415,35 @@
         })
      </script>
      <script>
-  //     // Graphs
-  //     const ctx2 = document.getElementById('myChart2')
-  //     // eslint-disable-next-line no-unused-vars
-  //     const myChart2 = new Chart(ctx2, {
-  //       type: 'line',
-  //       data: {
-  //         // x축 데이터
-  //         labels: {{x_data | tojson}},
-  //         datasets: [{
-  //           // data -> y축 데이터
-  //           data: {{y1_data | tojson}},
-  //           lineTension: 0,
-  //           backgroundColor: 'transparent',
-  //           borderColor: '#007bff',
-  //           borderWidth: 4,
-  //           pointBackgroundColor: '#007bff'
-  //         }]
-  //       },
-  //       options: {
-  //         plugins: {
-  //           legend: {
-  //             display: false
-  //           },
-  //           tooltip: {
-  //             boxPadding: 3
-  //           }
-  //         }
-  //       }
-  //     })
+      // Graphs
+      const ctx2 = document.getElementById('myChart2')
+      // eslint-disable-next-line no-unused-vars
+      const myChart2 = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          // x축 데이터
+          labels: {{x_data | tojson}},
+          datasets: [{
+            // data -> y축 데이터
+            data: {{y1_data | tojson}},
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#007bff',
+            borderWidth: 4,
+            pointBackgroundColor: '#007bff'
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              boxPadding: 3
+            }
+          }
+        }
+      })
      </script>
   </body>
 </html>

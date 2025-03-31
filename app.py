@@ -50,6 +50,16 @@ def dashboard():
     result.reset_index(inplace = True)
     # 특정 컬럼만 필터
     result = result[['Date', 'Close', 'trade', 'rtn', 'acc_rtn']]
+    # 특정 컬럼을 생성
+    result['ym'] = result['Date'].dt.strftime('%Y-%m')
+    # 테이블을 정제
+    result = pd.concat(
+        [
+            result.groupby('ym')[['Close', 'trade', 'acc_rtn']].max(),
+            result.groupby('ym')[['rtn']].mean()
+        ], axis=1
+    )
+    result.reset_index(inplace=True)
     # 컬럼의 이름을 변경
     result.columns = ['시간', '종가', '보유내역', '일별 수익률', '누적 수익률']
     # 컬럼들의 이름을 리스트로 생성
