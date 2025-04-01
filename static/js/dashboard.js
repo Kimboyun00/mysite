@@ -9,10 +9,11 @@
   const myChart = new Chart(ctx, {
     type: 'line',
     data: {
-      // x축 데이터
+      // x축 데이터터
       labels: {{x_data | tojson}},
+      // y축의 데이터들들
       datasets: [{
-        // data -> y축 데이터
+        // data -> y축 데이터터
         data: {{y_data | tojson}},
         lineTension: 0,
         backgroundColor: 'transparent',

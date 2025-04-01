@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <!-- gtag.html을 포함시킨다 -->
+    {% include 'gtag.html' %}
+</head>
+<body>
+    <form action="/signin" method="post">
+        <div>
+            <label>ID</label>
+            <input type="text" name="id">
+        </div>
+        <div>
+            <label>password</label>
+            <input type="password" name="password">
+        </div>
+        <input type="submit" value="로그인">
+        <a href = '/signup'>회원 가입</a>
+    </form>
+</body>
+</html>

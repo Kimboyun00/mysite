@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Invest</title>
+    {% include 'gtag.html' %}
 </head>
 <body>
     <!-- 유저가 값을 입력하는 부분 -->
-    <!-- 투자 종목 / 투자 기간 / 투자 방식 -->
+     <!-- 투자 종목 / 투자 기간 / 투자 방식 -->
     <form action="/dashboard" method="get">
         <div>
             <label>투자 종목 선택</label>
@@ -15,28 +16,26 @@
         </div>
         <div>
             <label>투자 시작 시간</label>
-            <select name="year">
+            <select name ='year'>
                 {% for i in range(2010, 2026) %}
                     <option value="{{i}}">{{i}}</option>
                 {% endfor %}
-            </select>
-            <select name="month">
-                {% for month in range(1, 13) %}
-                    <option value="{{month}}">{{month}}</option>
+            </select> 
+            <select name = 'month'>
+                {%  for month in range(1, 13) %}
+                    <option value='{{month}}'>{{month}}</option>
                 {% endfor %}
             </select>
-            <select name="day">
+            <select name = 'day'>
                 {% for day in range(1, 32) %}
                     <option value="{{day}}">{{day}}</option>
                 {% endfor %}
             </select>
         </div>
         <div>
-            <label>
-                투자 방법
-            </label>
+            <label>투자 방법</label>
             <select name="type">
-                <option value="bnh">BuyAndHold</option>
+                <option value="bnh">BuyAndHlod</option>
                 <option value="boll">Bollinger</option>
                 <option value="mmt">Momentum</option>
             </select>

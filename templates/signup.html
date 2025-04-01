@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    {% include 'gtag.html' %}
+</head>
+<body>
+    <form action="/signup2" method="post">
+        <div>
+            <label>ID</label>
+            <input type="text" name="id">
+        </div>
+        <div>
+            <label>password</label>
+            <input type="password" name="password">
+        </div>
+        <div>
+            <label>name</label>
+            <input type="text" name="name">
+        </div>
+        <input type="submit" value="회원가입">
+    </form>
+</body>
+</html>
